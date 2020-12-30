@@ -11,15 +11,11 @@ export class ProductnService {
   constructor(public usernService: UsernService, public http: HttpClient) {}
   addproduct(product: Product): Observable<any> {
     return this.http.post(
-      `http://localhost:8080/product/${this.usernService.username}/merchaddproduct`,
+      `http://localhost:7070/product/${this.usernService.username}/merchaddproduct`,
       product
     );
   }
 
-  getproduct(product: Product): Observable<any> {
-    return this.http.get(
-      `http://localhost:8080/product/${this.usernService.username}/merchaddproduct`
-    );
-  }
+  
   
 }

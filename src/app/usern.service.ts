@@ -15,26 +15,29 @@ export class UsernService {
   }
 
   adduser(user: User): Observable<any> {
-    return this.http.post(`http://localhost:8080/signup`, user);
+    return this.http.post(`http://localhost:7070/signup`, user);
   }
 
   viewallusers(): Observable<any> {
-    return this.http.get('http://localhost:8080/users');
+    return this.http.get('http://localhost:7070/users');
   }
 
   loginuser(loginuser: Loginuser): Observable<any> {
-    return this.http.post('http://localhost:8080/login', loginuser);
+    return this.http.post('http://localhost:7070/login', loginuser);
   }
 
   getprofile(username: string): Observable<any> {
-    return this.http.get(`http://localhost:8080/${username}/profile`);
+    return this.http.get(`http://localhost:7070/${username}/profile`);
   }
 
   addprofile(profileuser: Profileuser): Observable<any> {
     return this.http.post(
-      `http://localhost:8080/sid22/addprofile`,
+      `http://localhost:7070/sid22/addprofile`,
       profileuser
     );
+  }
+  viewproductbymerchantid(merchantid: string): Observable<any> {
+    return this.http.get(`http://localhost:7070/products/viewproductbyuser/`+merchantid);
   }
 
 

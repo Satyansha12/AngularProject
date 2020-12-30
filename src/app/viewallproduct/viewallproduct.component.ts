@@ -9,29 +9,38 @@ import { UsernService } from '../usern.service';
   styleUrls: ['./viewallproduct.component.css']
 })
 export class ViewallproductComponent implements OnInit {
-  product: Product = new Product();
-  data!: any;
-  username: string;
-  msg!: string;
+  productid: string;
+  pname: string;
+  category: string;
+  iscancelled: string = '';
+  price: Int32Array;
+  description:string;
+  username: any;
+  msg: string;
+  data: string;
 
-  constructor(public productnService: ProductnService,
-    public usernService: UsernService) {
-    this.username = usernService.username;
-   }
+  constructor(public usernService: UsernService) { 
+    this.username = localStorage.getItem('username');
+    this.username = '';
+  }
 
   ngOnInit(): void {
-    this.getproduct();
-  }
-  getproduct(): void {
-    if (!this.username) {
-      this.msg = 'User not logged in. Login please';
-      return;
-    } else {
-      this.productnService.getproduct(this.product).subscribe(data => {
-        console.log(data);
-        this.data = data;
-      });
-    }
-  }
-
-}
+    // this.getprofile();
+    this.usernService.viewproductbymerchantid('5fe57d4e44772a04f54ea197').subscribe(data => {
+     console.log(data);
+     this.data = data;
+   });
+   }
+   viewproductbymerchantid(): void {
+     if (!this.username) {
+       this.msg = 'User not logged in. Login please';
+       return;
+     } else {
+       this.usernService.viewproductbymerchantid(this.username).subscribe(data => {
+         console.log(data);
+         this.data = data;
+       });
+     }
+   }
+ 
+ }
