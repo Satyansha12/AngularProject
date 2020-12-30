@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AddproductService } from './addproduct.service';
+import { UsernService } from './usern.service';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +8,15 @@ import { AddproductService } from './addproduct.service';
 })
 export class AppComponent {
   showme: boolean = false;
-  title = 'angular-project';
+  title = 'sify-client';
   username: string;
 
-  constructor() {}
+  constructor(public usernService: UsernService) {}
   ngOnInit(): void {
-
+    if (this.usernService.username == 'logged') {
+      this.showme = true;
+    } else {
+      this.showme = false;
     }
   }
-
+}

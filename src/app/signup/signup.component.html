@@ -1,0 +1,81 @@
+<header class="display-4 text-center mb-1">Signup Now</header>
+
+<div [hidden]="!msg" class="alert alert-success">{{msg}}</div>
+<div [hidden]="!error" class="alert alert-danger">{{error}}</div>
+<form #frm="ngForm" class="col-6 mx-auto" (ngSubmit)="add()">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input [(ngModel)]="user.username" #username="ngModel" name="txtusername" type="text" id="username"
+      class="form-control" required minlength="3" maxlength="15" pattern="[0-9a-zA-Z_]*" autocomplete="off">
+    <div class="alert alert-danger" *ngIf="username.touched && !username.valid">
+      <div *ngIf="username.errors.required">Username is required.</div>
+      <div *ngIf="username.errors.minlength">Username must be atleast 3 characters long.</div>
+      <div *ngIf="username.errors.maxlength">Username must be maximum 15 characters long.</div>
+      <div *ngIf="username.errors.pattern">Username must not contain spaces or special characters.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input [(ngModel)]="user.email" #email="ngModel" name="txtemail" type="email" id="email" class="form-control"
+      required minlength="5"
+      pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+      autocomplete="off">
+    <div class="alert alert-danger" *ngIf="email.touched && !email.valid">
+      <div *ngIf="email.errors.required">Email is required.</div>
+      <div *ngIf="email.errors.minlength">Email must be atleast 5 characters long.</div>
+      <div *ngIf="email.errors.pattern">Email is invalid. Email must be in a@b.c format.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="fname">First Name</label>
+    <input [(ngModel)]="user.fname" #fname="ngModel" name="txtfname" type="text" id="fname" class="form-control"
+      required minlength="3" maxlength="20" pattern="[a-zA-Z]*" autocomplete="off">
+    <div class="alert alert-danger" *ngIf="fname.touched && !fname.valid">
+      <div *ngIf="fname.errors.required">First Name is required.</div>
+      <div *ngIf="fname.errors.minlength">First Name must be atleast 3 characters long.</div>
+      <div *ngIf="fname.errors.maxlength">First Name must be maximum 20 characters long.</div>
+      <div *ngIf="fname.errors.pattern">First Name must contain alphabets only.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="lname">Last Name</label>
+    <input [(ngModel)]="user.lname" #lname="ngModel" name="txtlname" type="text" id="lname" class="form-control"
+      required minlength="3" maxlength="20" pattern="[a-zA-Z]*" autocomplete="off">
+    <div class="alert alert-danger" *ngIf="lname.touched && !lname.valid">
+      <div *ngIf="lname.errors.required">Last Name is required.</div>
+      <div *ngIf="lname.errors.minlength">Last Name must be atleast 3 characters long.</div>
+      <div *ngIf="lname.errors.maxlength">Last Name must be maximum 20 characters long.</div>
+      <div *ngIf="lname.errors.pattern">Last Name must contain alphabets only.</div>
+    </div>
+  </div>
+
+  <label class="mr-5">Gender </label>
+  <div class="form-check-inline">
+    <div class="form-contol">
+      <label class="form-check-label" for="male">
+        <input class="form-check-input" type="radio" #gender=ngModel name="txtgender" value="male" id="male"
+          [(ngModel)]="user.gender" checked="true">
+        Male
+      </label>
+      <label class="form-check-label ml-3" for="female">
+        <input class="form-check-input" type="radio" #gender=ngModel name="txtgender" value="female" id="female"
+          [(ngModel)]="user.gender">
+        Female
+      </label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input [(ngModel)]="user.password" #password="ngModel" name="txtpassword" type="password" id="password"
+      class="form-control" required minlength="8" autocomplete="off">
+    <div class="alert alert-danger" *ngIf="password.touched && !password.valid">
+      <div *ngIf="password.errors.required">Password is required.</div>
+      <div *ngIf="password.errors.minlength">Password must be atleast 8 characters long.</div>
+    </div>
+  </div>
+  <button class="btn btn-primary" [disabled]="!frm.valid">SignUp</button>
+</form>

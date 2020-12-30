@@ -1,0 +1,11 @@
+<header class="display-4 text-center mb-1">Product</header>
+<div [hidden]="!msg" class="alert alert-danger">{{msg}}</div>
+<section [hidden]="msg" class="col-6 mx-auto">
+  <ul class="list-group">
+    <li class="list-group-item list-group-item-info">User Name: {{data.doc.username}}</li>
+    <li class="list-group-item list-group-item-info">Product Name: {{data.pdata.productl}}</li>
+    <li class="list-group-item list-group-item-info">Category: {{data.pdata.category}}</li>
+    <li class="list-group-item list-group-item-info">Price: +91 {{data.pdata.price}}</li>
+    <li class="list-group-item list-group-item-info">Description: {{data.pdata.description}}</li>
+ </ul>
+</section>

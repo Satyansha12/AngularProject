@@ -1,0 +1,20 @@
+<section>
+  <header class="display-4 text-center mb-1">Users</header>
+
+  <table class="col-8 mx-auto table table-primary table-striped table-hover">
+    <tr class="bg-danger text-white">
+      <td>Username</td>
+      <td>Email</td>
+      <td>Name</td>
+      <td>Gender</td>
+      <td>DOJ</td>
+    </tr>
+    <tr *ngFor="let u of users">
+      <td>{{u.username}}</td>
+      <td>{{u.email }}</td>
+      <td>{{u.fname +' '+ u.lname | titlecase}}</td>
+      <td>{{u.gender | uppercase}}</td>
+      <td>{{u.createdAt | date:'dd-MM-yyyy'}}</td>
+    </tr>
+  </table>
+</section>

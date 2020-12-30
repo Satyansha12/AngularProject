@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AddproductService } from '../addproduct.service';
 import { Product } from '../product';
+import { ProductnService } from '../productn.service';
+import { UsernService } from '../usern.service';
 
 @Component({
   selector: 'app-addproduct',
@@ -12,20 +13,32 @@ export class AddproductComponent implements OnInit {
   product: Product = new Product();
   msg!: string;
   error!: string;
+  loginerror!: string;
   @ViewChild('frm')
   form: NgForm;
 
-  constructor(public addproductService: AddproductService) { }
+  constructor(
+    public productnService: ProductnService,
+    public usernService: UsernService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (!this.usernService.username) {
+      this.msg = 'Please Login to Add products!';
+      this.loginerror = 'Not Logged';
+    }
+  }
 
-  add(){
-    this.addproductService.addproduct(this.product).subscribe((data => {
-     console.log(data);
-     this.msg=data.msg;
-     if(this.msg.includes("Inserted"))
-     this.form.reset();
-    }),error=>{console.log(error)}
-    )}
+  add() {
+    this.productnService.addproduct(this.product).subscribe(data => {
+      if (data.error) {
+        this.error = data.error;
+      } else {
+        this.msg = data.msg;
+      }
+    });
 
+    this.product = new Product();
+    this.form.reset();
+  }
 }

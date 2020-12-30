@@ -1,0 +1,19 @@
+<header class="display-4 text-center mb-1">Profile</header>
+<div [hidden]="!msg" class="alert alert-danger">{{msg}}</div>
+<section [hidden]="msg" class="col-7 mx-auto">
+  <ul class="list-group">
+    <li class="list-group-item bg-danger text-white">UserId: {{data.doc._id}}</li>
+    <li class="list-group-item list-group-item-info">User Name: {{data.doc.username}}</li>
+    <li class="list-group-item list-group-item-info">Full Name: {{data.doc.fname | titlecase}}
+      {{data.doc.lname | titlecase}}</li>
+    <li class="list-group-item list-group-item-info">Email: {{data.doc.email}}</li>
+    <li class="list-group-item list-group-item-info">Gender: {{data.doc.gender | uppercase}}</li>
+    <li class="list-group-item list-group-item-info">Phone: +91 {{data.pdata.phone}}</li>
+    <li class="list-group-item list-group-item-info">Company: {{data.pdata.company | titlecase}}</li>
+    <li class="list-group-item list-group-item-info">Address: {{data.pdata.address | titlecase}}</li>
+    <li class="list-group-item list-group-item-info">City: {{data.pdata.city | titlecase}}</li>
+    <li class="list-group-item list-group-item-info">PIN: {{data.pdata.pin}}</li>
+    <li class="list-group-item list-group-item-info">Country: {{data.pdata.country | titlecase}}</li>
+    <li class="list-group-item list-group-item-info">About: {{data.pdata.about }}</li>
+  </ul>
+</section>

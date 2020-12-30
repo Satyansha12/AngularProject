@@ -1,0 +1,85 @@
+<header class="display-4 text-center mb-1">Edit Profile</header>
+<div [hidden]="!msg" class="alert alert-success">{{msg}}</div>
+<div [hidden]="!error" class="alert alert-danger">{{error}}</div>
+<form #frm="ngForm" class="col-6 mx-auto" (ngSubmit)="addprofile()">
+
+  <div class="form-group">
+    <label for="phone">Phone: </label>
+    <input [(ngModel)]="profileuser.phone" #phone="ngModel" name="txtphone" type="text" id="phone" class="form-control"
+      minlength="10" maxlength="10" pattern="[0-9]*" autocomplete="off">
+    <div class="alert alert-danger" *ngIf="phone.touched && !phone.valid">
+      <div *ngIf="phone.errors.minlength">Phone must be atleast 10 characters long.</div>
+      <div *ngIf="phone.errors.maxlength">Phone must be maximum 15 characters long.</div>
+      <div *ngIf="phone.errors.pattern">Phone must contain only digits.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="company">Company: </label>
+    <input [(ngModel)]="profileuser.company" #company="ngModel" name="txtcompany" type="text" id="company"
+      class="form-control" minlength="3" maxlength="20" pattern="[0-9a-zA-Z ]*" autocomplete="off">
+    <div class="alert alert-danger" *ngIf="company.touched && !company.valid">
+      <div *ngIf="company.errors.minlength">Company must be atleast 3 characters long.</div>
+      <div *ngIf="company.errors.maxlength">Company must be maximum 20 characters long.</div>
+      <div *ngIf="company.errors.pattern">Company must not contain any special characters.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="address">Address: </label>
+    <input [(ngModel)]="profileuser.address" #address="ngModel" name="txtaddress" type="text" id="address"
+      class="form-control" minlength="5" maxlength="30" pattern="[A-Za-z0-9'\.\-\s\,]*" autocomplete="off">
+    <div class="alert alert-danger" *ngIf="address.touched && !address.valid">
+      <div *ngIf="address.errors.minlength">Address must be atleast 5 characters long.</div>
+      <div *ngIf="address.errors.maxlength">Address must be maximum 30 characters long.</div>
+      <div *ngIf="address.errors.pattern">Address must not contain any special characters.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="city">City: </label>
+    <input [(ngModel)]="profileuser.city" #city="ngModel" name="txtcity" type="text" id="city" class="form-control"
+      minlength="3" maxlength="30" pattern="[0-9a-zA-Z ]*" autocomplete="off">
+    <div class="alert alert-danger" *ngIf="city.touched && !city.valid">
+      <div *ngIf="city.errors.minlength">City must be atleast 2 characters long.</div>
+      <div *ngIf="city.errors.maxlength">City must be maximum 30 characters long.</div>
+      <div *ngIf="city.errors.pattern">City must not contain only any special characters.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="pin">PIN: </label>
+    <input [(ngModel)]="profileuser.pin" #pin="ngModel" name="txtpin" type="text" id="pin" class="form-control"
+      minlength="6" maxlength="6" pattern="[0-9]*" autocomplete="off">
+    <div class="alert alert-danger" *ngIf="pin.touched && !pin.valid">
+      <div *ngIf="pin.errors.minlength">PIN must be 6 characters long.</div>
+      <div *ngIf="pin.errors.maxlength">PIN must be maximum 30 characters long.</div>
+      <div *ngIf="pin.errors.pattern">PIN must contain only digits.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="country">Country: </label>
+    <input [(ngModel)]="profileuser.country" #country="ngModel" name="txtcountry" type="text" id="country"
+      class="form-control" minlength="3" maxlength="30" pattern="[a-zA-Z ]*" autocomplete="off">
+    <div class="alert alert-danger" *ngIf="country.touched && !country.valid">
+      <div *ngIf="country.errors.minlength">Country must be atleast 3 characters long.</div>
+      <div *ngIf="country.errors.maxlength">Country must be maximum 30 characters long.</div>
+      <div *ngIf="country.errors.pattern">Country must not contain only any special characters.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="about">About: </label>
+    <input [(ngModel)]="profileuser.about" #about="ngModel" name="txtabout" type="text" id="about" class="form-control"
+      minlength="3" maxlength="30" pattern="[0-9a-zA-Z ]*" autocomplete="off">
+    <div class="alert alert-danger" *ngIf="about.touched && !about.valid">
+      <div *ngIf="about.errors.minlength">About must be atleast 3 characters long.</div>
+      <div *ngIf="about.errors.maxlength">About must be maximum 30 characters long.</div>
+      <div *ngIf="about.errors.pattern">About must not contain only any special characters.</div>
+    </div>
+  </div>
+
+
+  <button class="btn btn-primary" [disabled]="!frm.valid">Add Profile</button>
+</form>

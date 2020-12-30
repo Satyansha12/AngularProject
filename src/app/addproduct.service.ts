@@ -9,10 +9,10 @@ import { HttpClient } from '@angular/common/http';
 export class AddproductService {
   [x: string]: any;
   username: string;
-  constructor(public htpp: HttpClient) { }
+  constructor(public http: HttpClient) { }
   addproduct(product: Product): Observable<any> {
     console.log(product);
-    return this.http.post(`http://localhost:7070/sid22/addproduct`, product);
+    return this.http.post(`http://localhost:7070/products/addproduct`, product);
   }
 
 }
